@@ -1,0 +1,5 @@
+Arimo Regular and Bold (Apache License 2.0)
+https://github.com/googlefonts/Arimo
+
+These files are used as Arial-metric substitutes for Edit PDF text overlays.
+The Apache License 2.0 text is at https://www.apache.org/licenses/LICENSE-2.0

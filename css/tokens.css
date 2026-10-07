@@ -1,0 +1,92 @@
+:root {
+  --font-display: "Fraunces", "Iowan Old Style", "Palatino Linotype", Palatino, Georgia, serif;
+  --font-body: "Source Sans 3", "Source Sans Pro", "Segoe UI", Candara, sans-serif;
+  --font-mono: "IBM Plex Mono", "Consolas", "Courier New", monospace;
+
+  --color-bg: #eef2f5;
+  --color-bg-elevated: #f7f9fb;
+  --color-surface: #ffffff;
+  --color-ink: #0f1c24;
+  --color-ink-soft: #3d4f5c;
+  --color-muted: #6b7c88;
+  --color-line: #d5dee5;
+  --color-line-strong: #b7c4ce;
+
+  --color-accent: #0d8a7c;
+  --color-accent-hover: #0a6f64;
+  --color-accent-soft: rgba(13, 138, 124, 0.12);
+  --color-accent-ink: #ffffff;
+
+  --color-danger: #c0392b;
+  --color-danger-soft: rgba(192, 57, 43, 0.12);
+  --color-warning: #b7791f;
+  --color-warning-soft: rgba(183, 121, 31, 0.14);
+  --color-success: #1f7a4d;
+  --color-success-soft: rgba(31, 122, 77, 0.12);
+
+  --color-hero-1: #0b3d4a;
+  --color-hero-2: #126e6a;
+  --color-hero-3: #1a9b8e;
+  --color-hero-ink: #f4faf9;
+  --color-hero-muted: rgba(244, 250, 249, 0.78);
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 3rem;
+  --space-8: 4.5rem;
+  --space-9: 6rem;
+
+  --radius-sm: 0.35rem;
+  --radius-md: 0.65rem;
+  --radius-lg: 1rem;
+
+  --shadow-sm: 0 1px 2px rgba(15, 28, 36, 0.06);
+  --shadow-md: 0 8px 24px rgba(15, 28, 36, 0.08);
+  --shadow-lg: 0 18px 48px rgba(15, 28, 36, 0.12);
+
+  --container: 72rem;
+  --header-h: 4rem;
+  --z-header: 40;
+  --z-dropdown: 50;
+  --z-modal: 60;
+  --z-toast: 70;
+
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-fast: 160ms;
+  --duration: 280ms;
+  --duration-slow: 480ms;
+
+  color-scheme: light;
+}
+
+[data-theme="dark"] {
+  --color-bg: #0d151a;
+  --color-bg-elevated: #121c23;
+  --color-surface: #17232c;
+  --color-ink: #eef3f6;
+  --color-ink-soft: #c2ced6;
+  --color-muted: #8a9aa5;
+  --color-line: #2a3a45;
+  --color-line-strong: #3d5160;
+
+  --color-accent: #2ec4b6;
+  --color-accent-hover: #4fd4c7;
+  --color-accent-soft: rgba(46, 196, 182, 0.16);
+  --color-accent-ink: #06221f;
+
+  --color-hero-1: #07151b;
+  --color-hero-2: #0d3a3f;
+  --color-hero-3: #14685f;
+  --color-hero-ink: #f4faf9;
+  --color-hero-muted: rgba(244, 250, 249, 0.72);
+
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 8px 24px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 18px 48px rgba(0, 0, 0, 0.45);
+
+  color-scheme: dark;
+}

@@ -1,0 +1,303 @@
+@font-face {
+  font-family: DocForgeArial;
+  src: url('../../vendor/fonts/Arimo-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: DocForgeArial;
+  src: url('../../vendor/fonts/Arimo-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+.tool-workspace--editor {
+  grid-template-columns: minmax(0, 2fr) minmax(18rem, 0.85fr);
+}
+
+.tool-workspace.is-editing #js-dropzone {
+  display: none;
+}
+
+.pdf-editor[hidden] {
+  display: none !important;
+}
+
+.pdf-editor__toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  align-items: center;
+}
+
+.pdf-editor__tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.pdf-editor__tools .btn.is-active {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-accent-ink);
+}
+
+.pdf-editor__pages {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 700;
+  color: var(--color-ink-soft);
+}
+
+.pdf-editor__stage {
+  overflow: auto;
+  min-height: 28rem;
+  max-height: min(72vh, 52rem);
+  padding: var(--space-5);
+  border-radius: var(--radius-md);
+  background:
+    linear-gradient(180deg, rgba(15, 28, 36, 0.04), transparent 40%),
+    var(--color-bg);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.pdf-editor__page {
+  position: relative;
+  background: #fff;
+  box-shadow: var(--shadow-lg);
+  line-height: 0;
+}
+
+.pdf-editor__page canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pdf-editor__overlay {
+  position: absolute;
+  inset: 0;
+  cursor: default;
+}
+
+.pdf-editor__overlay[data-tool="text"] {
+  cursor: text;
+}
+
+.pdf-editor__overlay.is-picking {
+  cursor: crosshair;
+}
+
+.pdf-editor__overlay[data-tool="highlight"],
+.pdf-editor__overlay[data-tool="redact"],
+.pdf-editor__overlay[data-tool="tick"],
+.pdf-editor__overlay[data-tool="cross"] {
+  cursor: crosshair;
+}
+
+.pdf-editor__marquee {
+  position: absolute;
+  border: 1px dashed var(--color-accent);
+  background: var(--color-accent-soft);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.edit-item {
+  position: absolute;
+  box-sizing: border-box;
+  border: 1px dashed transparent;
+  user-select: none;
+  touch-action: none;
+}
+
+.edit-item.is-selected {
+  border-color: var(--color-accent);
+  z-index: 3;
+}
+
+.edit-item__body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.edit-item--text .edit-item__body {
+  padding: 0.1em 0.15em;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  line-height: 1.25;
+  white-space: pre-wrap;
+  word-break: break-word;
+  cursor: grab;
+}
+
+.edit-item--image .edit-item__body img,
+.edit-item--signature .edit-item__body img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.edit-item--highlight .edit-item__body,
+.edit-item--redact .edit-item__body {
+  width: 100%;
+  height: 100%;
+}
+
+.edit-item--tick,
+.edit-item--cross {
+  cursor: grab;
+}
+
+.edit-item--tick .edit-item__body,
+.edit-item--cross .edit-item__body {
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+}
+
+.edit-item__mark {
+  display: block;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.edit-item__handle {
+  display: none;
+  position: absolute;
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 1px;
+  background: var(--color-accent);
+  border: 2px solid #fff;
+  box-shadow: var(--shadow-sm);
+  padding: 0;
+}
+
+.edit-item.is-selected .edit-item__handle {
+  display: block;
+}
+
+.edit-item__handle--nw { left: -0.35rem; top: -0.35rem; cursor: nwse-resize; }
+.edit-item__handle--ne { right: -0.35rem; top: -0.35rem; cursor: nesw-resize; }
+.edit-item__handle--sw { left: -0.35rem; bottom: -0.35rem; cursor: nesw-resize; }
+.edit-item__handle--se { right: -0.35rem; bottom: -0.35rem; cursor: nwse-resize; }
+
+.field--size-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+#opt-edit-size-value {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-muted);
+  font-weight: 600;
+}
+
+.field--color {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.field--color input[type="color"] {
+  width: 2.6rem;
+  min-height: 2.4rem;
+  padding: 0.15rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-line-strong);
+  background: var(--color-bg-elevated);
+}
+
+.fill-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.45rem;
+}
+
+.modal--signature {
+  width: min(36rem, 100%);
+}
+
+.signature-pad {
+  margin-bottom: var(--space-3);
+}
+
+.signature-pad__canvas {
+  display: block;
+  width: 100%;
+  height: 10.5rem;
+  touch-action: none;
+  cursor: crosshair;
+  background:
+    linear-gradient(transparent 70%, color-mix(in srgb, var(--color-line) 70%, transparent) 70.5%, transparent 71.5%),
+    #fff;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-sm);
+}
+
+.signature-pad__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: var(--space-5);
+}
+
+.page-crop__overlay {
+  cursor: crosshair;
+}
+
+.page-crop__box {
+  position: absolute;
+  box-sizing: border-box;
+  border: 2px solid var(--color-accent);
+  background: color-mix(in srgb, var(--color-accent) 16%, transparent);
+  box-shadow: 0 0 0 9999px rgba(15, 28, 36, 0.28);
+  pointer-events: none;
+}
+
+.page-crop__preview {
+  display: block;
+  max-width: 100%;
+  max-height: 10rem;
+  margin-bottom: 1rem;
+  background: #fff;
+  border: 1px solid var(--color-line-strong);
+  border-radius: var(--radius-sm);
+  object-fit: contain;
+  image-rendering: auto;
+}
+
+.page-crop__preview.is-transparent {
+  background-color: #f4f4f5;
+  background-image:
+    linear-gradient(45deg, #d4d4d8 25%, transparent 25%),
+    linear-gradient(-45deg, #d4d4d8 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #d4d4d8 75%),
+    linear-gradient(-45deg, transparent 75%, #d4d4d8 75%);
+  background-size: 12px 12px;
+  background-position: 0 0, 0 6px, 6px -6px, -6px 0;
+}
+
+@media (max-width: 900px) {
+  .pdf-editor__stage {
+    min-height: 22rem;
+    max-height: 60vh;
+    padding: var(--space-3);
+  }
+}

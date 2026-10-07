@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="About DocForge — privacy, local processing, and product principles." />
+  <title>About &amp; Privacy — DocForge</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/tool.css" />
+  <link rel="stylesheet" href="css/utilities.css" />
+</head>
+<body data-depth="0">
+  <div class="shell">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand-lockup" href="index.html" aria-label="DocForge home">
+          <span class="brand-badge" aria-hidden="true"></span>
+          <span class="brand-mark"><span data-brand>DocForge</span></span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <div class="nav__dropdown" data-tools-dropdown>
+            <button type="button" class="nav__link" data-tools-toggle aria-expanded="false" aria-haspopup="true">
+              Tools <span aria-hidden="true">▾</span>
+            </button>
+            <div class="nav__menu" data-tools-menu></div>
+          </div>
+          <a class="nav__link is-active" href="about.html" data-nav aria-current="page">Privacy</a>
+          <button type="button" class="nav__link" data-theme-toggle aria-label="Switch theme">Theme</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell__main">
+      <div class="container tool-page">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <span class="breadcrumb__sep">/</span>
+          <span>About &amp; privacy</span>
+        </nav>
+        <header class="tool-hero stack" style="--stack-space: 1rem; max-width: 48rem;">
+          <h1>Private document tools</h1>
+          <p>DocForge is a static, browser-only toolkit. There is no backend, no account system, and no file upload endpoint.</p>
+        </header>
+
+        <div class="stack" style="--stack-space: 1.25rem; max-width: 48rem;">
+          <div class="panel">
+            <h2 class="panel__title">What stays on your device</h2>
+            <p>When you open a PDF or image, the browser reads it into memory, runs the selected tool with client-side libraries, and offers a download. Your files are not sent to DocForge servers — because there are none.</p>
+          </div>
+          <div class="panel">
+            <h2 class="panel__title">Honest capabilities</h2>
+            <p>Merge, split, rotate, organize, delete pages, visual edit overlays, sign (draw or stamp), crop a signature from a page, PDF↔images, and images→PDF are strong client-side features. Compress re-encodes pages (best-effort). Extract text, PDF to Word, and PDF to Excel use the PDF text layer, then in-browser OCR (English) for scanned pages. Word and Excel downloads are simple files — not layout-faithful conversions. Edit PDF adds overlays — it does not rewrite original text in place. Redact can use a chosen color, pick a pixel from the page, or detect nearby paper color. Cropped signatures may be stored in localStorage so Sign PDF can reuse them on this device.</p>
+          </div>
+          <div class="panel">
+            <h2 class="panel__title">Theme preference</h2>
+            <p>The optional theme toggle stores a single preference key in localStorage. Crop signature can also keep a PNG stamp in localStorage for Sign PDF. No analytics or tracking cookies are used by this project.</p>
+          </div>
+          <p><a class="btn btn--primary" href="index.html#tools">Browse tools</a></p>
+        </div>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="site-footer__grid">
+          <div>
+            <a class="brand-lockup" href="index.html">
+              <span class="brand-badge" aria-hidden="true"></span>
+              <span class="brand-mark"><span data-brand>DocForge</span></span>
+            </a>
+          </div>
+          <div data-footer-groups></div>
+          <div>
+            <h3>Company</h3>
+            <ul>
+              <li><a href="about.html">About &amp; privacy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="site-footer__meta">
+          <span>All processing stays local.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+  <div id="modal-root" class="modal-root" hidden></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/ui/icons.js"></script>
+  <script src="js/router-nav.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Add text, tick and cross stamps, images, signatures, highlights, and redactions on a live page preview. Drag to place, then download." />
+  <title>Edit PDF — DocForge</title>
+  <link rel="icon" href="../../assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../../css/tokens.css" />
+  <link rel="stylesheet" href="../../css/reset.css" />
+  <link rel="stylesheet" href="../../css/base.css" />
+  <link rel="stylesheet" href="../../css/layout.css" />
+  <link rel="stylesheet" href="../../css/components.css" />
+  <link rel="stylesheet" href="../../css/pages/tool.css" />
+  <link rel="stylesheet" href="../../css/pages/edit.css" />
+  <link rel="stylesheet" href="../../css/utilities.css" />
+</head>
+<body data-depth="2" data-tool="edit">
+  <div class="shell">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand-lockup" href="../../index.html" aria-label="DocForge home">
+          <span class="brand-badge" aria-hidden="true"></span>
+          <span class="brand-mark"><span data-brand>DocForge</span></span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <div class="nav__dropdown" data-tools-dropdown>
+            <button type="button" class="nav__link" data-tools-toggle aria-expanded="false" aria-haspopup="true">
+              Tools <span aria-hidden="true">▾</span>
+            </button>
+            <div class="nav__menu" data-tools-menu></div>
+          </div>
+          <a class="nav__link" href="../../about.html" data-nav>Privacy</a>
+          <button type="button" class="nav__link" data-theme-toggle aria-label="Switch theme">Theme</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell__main">
+      <div class="container tool-page">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../../index.html">Home</a>
+          <span class="breadcrumb__sep">/</span>
+          <a href="../../index.html#tools">Tools</a>
+          <span class="breadcrumb__sep">/</span>
+          <span>Edit PDF</span>
+        </nav>
+        <header class="tool-hero">
+          <h1>Edit PDF</h1>
+          <p>Add text, tick and cross stamps, images, signatures, highlights, and redactions on a live page preview. Drag to place, then download.</p>
+        </header>
+
+        <div class="tool-workspace tool-workspace--editor">
+          <section class="tool-stage panel">
+            <div id="js-dropzone"></div>
+            <div id="js-editor" class="pdf-editor" hidden>
+              <div class="pdf-editor__toolbar">
+                <div class="pdf-editor__tools" role="toolbar" aria-label="Edit tools">
+                  <button type="button" class="btn btn--secondary btn--sm" data-edit-tool="select">Select</button>
+                  <button type="button" class="btn btn--secondary btn--sm" data-edit-tool="text">Text</button>
+                  <button type="button" class="btn btn--secondary btn--sm" data-edit-tool="image">Image</button>
+                  <button type="button" class="btn btn--secondary btn--sm" data-edit-tool="tick" title="Tick / checkmark (K)">Tick</button>
+                  <button type="button" class="btn btn--secondary btn--sm" data-edit-tool="cross" title="Cross (X)">Cross</button>
+                  <button type="button" class="btn btn--secondary btn--sm" data-edit-tool="highlight">Highlight</button>
+                  <button type="button" class="btn btn--secondary btn--sm" data-edit-tool="redact">Redact</button>
+                  <button type="button" class="btn btn--secondary btn--sm" data-edit-tool="sign" title="Draw or upload a signature (S)">Sign</button>
+                </div>
+                <div class="pdf-editor__pages">
+                  <button type="button" class="btn btn--ghost btn--sm" id="js-edit-prev" aria-label="Previous page">Prev</button>
+                  <span id="js-edit-page-label">1 / 1</span>
+                  <button type="button" class="btn btn--ghost btn--sm" id="js-edit-next" aria-label="Next page">Next</button>
+                </div>
+              </div>
+              <div class="pdf-editor__stage" id="js-edit-stage">
+                <div class="pdf-editor__page" id="js-edit-page">
+                  <canvas id="js-edit-canvas"></canvas>
+                  <div class="pdf-editor__overlay" id="js-edit-overlay" data-tool="select">
+                    <div class="pdf-editor__marquee" id="js-edit-marquee" hidden></div>
+                  </div>
+                </div>
+              </div>
+              <input id="js-edit-image-input" class="u-hidden" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" />
+            </div>
+            <div id="js-progress"></div>
+            <div id="js-result" class="result"></div>
+          </section>
+          <aside class="tool-options panel">
+            <h2 class="panel__title">Options</h2>
+            <div class="notice notice--info" style="margin-bottom: 1rem;">Edits are overlays. Existing PDF text is not rewritten in place. Signatures are drawings or images you place — not legal e-sign, and existing signatures are not detected.</div>
+            <div class="field" id="js-prop-default-font">
+              <label for="opt-edit-default-font">Default font</label>
+              <select id="opt-edit-default-font">
+                <option value="helvetica" selected>Helvetica</option>
+                <option value="helvetica-bold">Helvetica Bold</option>
+                <option value="arial">Arial</option>
+                <option value="arial-bold">Arial Bold</option>
+                <option value="times">Times Roman</option>
+                <option value="times-bold">Times Bold</option>
+                <option value="courier">Courier</option>
+              </select>
+              <p class="field__help">Used for new text overlays. Arial is embedded in the download; the others are built-in PDF fonts.</p>
+            </div>
+            <p class="field__help" id="js-props-empty">Select a tool, then click or drag on the page. Tick and Cross place checkbox-style stamps. Redact can use a color picker, pick from the page, or detect the paper color. Sign opens a pad to draw or upload. Drag objects to move; use corners to resize.</p>
+            <div id="js-redact-defaults" hidden>
+              <div class="field field--color">
+                <label for="opt-redact-default">Redact color</label>
+                <input id="opt-redact-default" type="color" value="#000000" />
+              </div>
+              <div class="fill-actions">
+                <button type="button" class="btn btn--secondary btn--sm" id="js-pick-color-default">Pick from page</button>
+                <button type="button" class="btn btn--secondary btn--sm" id="js-detect-color-default">Detect color</button>
+              </div>
+              <p class="field__help">Used for the next redaction. Pick samples a pixel on the page. Detect guesses the paper color.</p>
+            </div>
+            <div id="js-props-fields" hidden>
+              <div class="field" id="js-prop-text">
+                <label for="opt-edit-text">Text</label>
+                <textarea id="opt-edit-text" rows="4"></textarea>
+              </div>
+              <div class="field" id="js-prop-font">
+                <label for="opt-edit-font">Font</label>
+                <select id="opt-edit-font">
+                  <option value="helvetica">Helvetica</option>
+                  <option value="helvetica-bold">Helvetica Bold</option>
+                  <option value="arial">Arial</option>
+                  <option value="arial-bold">Arial Bold</option>
+                  <option value="times">Times Roman</option>
+                  <option value="times-bold">Times Bold</option>
+                  <option value="courier">Courier</option>
+                </select>
+              </div>
+              <div class="field" id="js-prop-size">
+                <label for="opt-edit-size">Size <span id="opt-edit-size-value">1.2</span></label>
+                <input id="opt-edit-size" type="range" min="0.4" max="8" step="0.1" value="1.2" />
+                <p class="field__help">Smaller values are better for captions and form labels.</p>
+              </div>
+              <div class="field field--color" id="js-prop-color">
+                <label for="opt-edit-color" id="js-prop-color-label">Text color</label>
+                <input id="opt-edit-color" type="color" value="#0f1c24" />
+              </div>
+              <div class="field" id="js-prop-fill">
+                <div class="field field--color" style="margin-bottom: 0;">
+                  <label for="opt-edit-fill" id="js-prop-fill-label">Highlight color</label>
+                  <input id="opt-edit-fill" type="color" value="#f7e26b" />
+                </div>
+                <div class="fill-actions" id="js-fill-actions" hidden>
+                  <button type="button" class="btn btn--secondary btn--sm" id="js-pick-color">Pick from page</button>
+                  <button type="button" class="btn btn--secondary btn--sm" id="js-detect-color">Detect color</button>
+                </div>
+                <p class="field__help" id="js-fill-help">Black covers the area. Pick samples a pixel; Detect matches paper around the box.</p>
+              </div>
+              <button type="button" class="btn btn--secondary btn--block" id="js-delete-item">Delete object</button>
+            </div>
+            <button type="button" class="btn btn--primary btn--block" id="js-process" data-tool-action="process">Save edited PDF</button>
+            <button type="button" class="btn btn--secondary btn--block" id="js-reset" data-tool-action="reset">Start over</button>
+          </aside>
+        </div>
+
+        <div class="action-bar">
+          <button type="button" class="btn btn--primary" id="js-process-mobile">Save edited PDF</button>
+        </div>
+
+        <section class="related-tools">
+          <h2>Related tools</h2>
+          <div class="related-tools__grid" data-related-tools></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="site-footer__grid">
+          <div>
+            <a class="brand-lockup" href="../../index.html">
+              <span class="brand-badge" aria-hidden="true"></span>
+              <span class="brand-mark"><span data-brand>DocForge</span></span>
+            </a>
+          </div>
+          <div data-footer-groups></div>
+          <div>
+            <h3>Company</h3>
+            <ul>
+              <li><a href="../../about.html">About &amp; privacy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="site-footer__meta">
+          <span>All processing stays local.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+  <div id="modal-root" class="modal-root" hidden></div>
+
+  <script src="../../vendor/pdf-lib.min.js"></script>
+  <script src="../../vendor/fontkit.umd.min.js"></script>
+  <script src="../../vendor/fonts/arimo-embedded.js"></script>
+  <script src="../../vendor/pdf.min.js"></script>
+  <script src="../../js/config.js"></script>
+  <script src="../../js/core/events.js"></script>
+  <script src="../../js/core/file-store.js"></script>
+  <script src="../../js/core/validate.js"></script>
+  <script src="../../js/core/download.js"></script>
+  <script src="../../js/core/errors.js"></script>
+  <script src="../../js/core/worker-bridge.js"></script>
+  <script src="../../js/core/cropped-signature.js"></script>
+  <script src="../../js/ui/icons.js"></script>
+  <script src="../../js/ui/toast.js"></script>
+  <script src="../../js/ui/modal.js"></script>
+  <script src="../../js/ui/progress.js"></script>
+  <script src="../../js/ui/dropzone.js"></script>
+  <script src="../../js/ui/file-list.js"></script>
+  <script src="../../js/ui/toolbar.js"></script>
+  <script src="../../js/ui/page-thumbnails.js"></script>
+  <script src="../../js/ui/pdf-editor.js"></script>
+  <script src="../../js/pdf/pdf-engine.js"></script>
+  <script src="../../js/pdf/edit.js"></script>
+  <script src="../../js/tools/tool-page.js"></script>
+  <script src="../../js/tools/edit.page.js"></script>
+  <script src="../../js/router-nav.js"></script>
+  <script src="../../js/app.js"></script>
+</body>
+</html>

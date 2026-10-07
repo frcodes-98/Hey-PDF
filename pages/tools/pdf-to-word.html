@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Convert a PDF to a Word (.docx) file in your browser. Scanned pages use local OCR." />
+  <title>PDF to Word — DocForge</title>
+  <link rel="icon" href="../../assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="../../css/tokens.css" />
+  <link rel="stylesheet" href="../../css/reset.css" />
+  <link rel="stylesheet" href="../../css/base.css" />
+  <link rel="stylesheet" href="../../css/layout.css" />
+  <link rel="stylesheet" href="../../css/components.css" />
+  <link rel="stylesheet" href="../../css/pages/tool.css" />
+  <link rel="stylesheet" href="../../css/utilities.css" />
+</head>
+<body data-depth="2" data-tool="pdf-to-word">
+  <div class="shell">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand-lockup" href="../../index.html" aria-label="DocForge home">
+          <span class="brand-badge" aria-hidden="true"></span>
+          <span class="brand-mark"><span data-brand>DocForge</span></span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <div class="nav__dropdown" data-tools-dropdown>
+            <button type="button" class="nav__link" data-tools-toggle aria-expanded="false" aria-haspopup="true">
+              Tools <span aria-hidden="true">▾</span>
+            </button>
+            <div class="nav__menu" data-tools-menu></div>
+          </div>
+          <a class="nav__link" href="../../about.html" data-nav>Privacy</a>
+          <button type="button" class="nav__link" data-theme-toggle aria-label="Switch theme">Theme</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell__main">
+      <div class="container tool-page">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="../../index.html">Home</a>
+          <span class="breadcrumb__sep">/</span>
+          <a href="../../index.html#tools">Tools</a>
+          <span class="breadcrumb__sep">/</span>
+          <span>PDF to Word</span>
+        </nav>
+        <header class="tool-hero">
+          <h1>PDF to Word</h1>
+          <p>Extract text from a PDF and download a Word (.docx) file. Layout, fonts, and images are not copied.</p>
+        </header>
+
+        <div class="tool-workspace">
+          <section class="tool-stage panel">
+            <div id="js-dropzone"></div>
+            <div id="js-file-list"></div>
+            <div id="js-progress"></div>
+            <div id="js-result" class="result"></div>
+          </section>
+          <aside class="tool-options panel">
+            <h2 class="panel__title">Options</h2>
+            <div class="notice notice--info" style="margin-bottom:1rem;">This builds a simple Word document from extracted text. It is not a layout-faithful conversion. Scanned pages can use in-browser OCR (English).</div>
+            <div class="field">
+              <label for="opt-ocr-mode">Method</label>
+              <select id="opt-ocr-mode">
+                <option value="auto" selected>Auto — text layer, OCR if a page looks scanned</option>
+                <option value="ocr">OCR every page (scanned documents)</option>
+                <option value="text">Text layer only (no OCR)</option>
+              </select>
+            </div>
+            <div class="field"><label for="opt-text">Preview</label><textarea id="opt-text" readonly placeholder="Extracted text appears here"></textarea></div>
+            <button type="button" class="btn btn--primary btn--block" id="js-process" data-tool-action="process">Convert to Word</button>
+            <button type="button" class="btn btn--secondary btn--block" id="js-reset" data-tool-action="reset">Start over</button>
+          </aside>
+        </div>
+
+        <div class="action-bar">
+          <button type="button" class="btn btn--primary" id="js-process-mobile">Convert to Word</button>
+        </div>
+
+        <section class="related-tools">
+          <h2>Related tools</h2>
+          <div class="related-tools__grid" data-related-tools></div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="site-footer__grid">
+          <div>
+            <a class="brand-lockup" href="../../index.html">
+              <span class="brand-badge" aria-hidden="true"></span>
+              <span class="brand-mark"><span data-brand>DocForge</span></span>
+            </a>
+          </div>
+          <div data-footer-groups></div>
+          <div>
+            <h3>Company</h3>
+            <ul>
+              <li><a href="../../about.html">About &amp; privacy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="site-footer__meta">
+          <span>All processing stays local.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+  <div id="modal-root" class="modal-root" hidden></div>
+
+  <script src="../../vendor/pdf.min.js"></script>
+  <script src="../../vendor/jszip.min.js"></script>
+  <script src="../../vendor/tesseract/tesseract.min.js"></script>
+  <script src="../../js/config.js"></script>
+  <script src="../../js/core/events.js"></script>
+  <script src="../../js/core/file-store.js"></script>
+  <script src="../../js/core/validate.js"></script>
+  <script src="../../js/core/docx.js"></script>
+  <script src="../../js/core/download.js"></script>
+  <script src="../../js/core/errors.js"></script>
+  <script src="../../js/core/worker-bridge.js"></script>
+  <script src="../../js/ui/icons.js"></script>
+  <script src="../../js/ui/toast.js"></script>
+  <script src="../../js/ui/modal.js"></script>
+  <script src="../../js/ui/progress.js"></script>
+  <script src="../../js/ui/dropzone.js"></script>
+  <script src="../../js/ui/file-list.js"></script>
+  <script src="../../js/ui/toolbar.js"></script>
+  <script src="../../js/ui/page-thumbnails.js"></script>
+  <script src="../../js/pdf/pdf-engine.js"></script>
+  <script src="../../js/pdf/ocr.js"></script>
+  <script src="../../js/pdf/extract-text.js"></script>
+  <script src="../../js/pdf/pdf-to-word.js"></script>
+  <script src="../../js/tools/tool-page.js"></script>
+  <script src="../../js/tools/pdf-to-word.page.js"></script>
+  <script src="../../js/router-nav.js"></script>
+  <script src="../../js/app.js"></script>
+</body>
+</html>

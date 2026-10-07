@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="DocForge — professional PDF tools that run entirely in your browser. Private, free, no install." />
+  <title>DocForge — Browser PDF Toolkit</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="css/tokens.css" />
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/pages/home.css" />
+  <link rel="stylesheet" href="css/utilities.css" />
+</head>
+<body data-depth="0">
+  <div class="shell">
+    <header class="site-header">
+      <div class="site-header__inner">
+        <a class="brand-lockup" href="index.html" aria-label="DocForge home">
+          <span class="brand-badge" aria-hidden="true"></span>
+          <span class="brand-mark"><span data-brand>DocForge</span></span>
+        </a>
+        <nav class="nav" aria-label="Primary">
+          <div class="nav__dropdown" data-tools-dropdown>
+            <button type="button" class="nav__link" data-tools-toggle aria-expanded="false" aria-haspopup="true">
+              Tools <span aria-hidden="true">▾</span>
+            </button>
+            <div class="nav__menu" data-tools-menu></div>
+          </div>
+          <a class="nav__link" href="about.html" data-nav>Privacy</a>
+          <button type="button" class="nav__link" data-theme-toggle aria-label="Switch theme">Theme</button>
+        </nav>
+      </div>
+    </header>
+
+    <main class="shell__main">
+      <section class="home-hero">
+        <div class="home-hero__atmosphere" aria-hidden="true"></div>
+        <div class="home-hero__paper" aria-hidden="true"></div>
+        <div class="container home-hero__content">
+          <p class="brand-mark"><span data-brand>DocForge</span></p>
+          <h1>PDF tools that never leave your browser.</h1>
+          <p class="home-hero__support">Merge, split, convert, and clean documents privately — no uploads, no accounts, no install.</p>
+          <div class="home-hero__actions">
+            <a class="btn btn--primary" href="#tools">Browse tools</a>
+            <a class="btn btn--secondary" href="#how">How it works</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="tools">
+        <div class="container">
+          <div class="section__header">
+            <h2>Every tool you need</h2>
+            <p>A focused toolkit for everyday document work. Pick a tool, drop a file, download the result.</p>
+          </div>
+          <div class="tool-grid" data-home-tools></div>
+        </div>
+      </section>
+
+      <section class="section" id="how">
+        <div class="container">
+          <div class="section__header">
+            <h2>How it works</h2>
+            <p>Three steps. Your files stay on this device the entire time.</p>
+          </div>
+          <div class="steps">
+            <div class="step">
+              <div class="step__num">01</div>
+              <h3>Choose a tool</h3>
+              <p>Open Merge, Split, Compress, or any convert utility from the catalog.</p>
+            </div>
+            <div class="step">
+              <div class="step__num">02</div>
+              <h3>Add your files</h3>
+              <p>Drop PDFs or images into the workspace. Processing starts only when you say so.</p>
+            </div>
+            <div class="step">
+              <div class="step__num">03</div>
+              <h3>Download the result</h3>
+              <p>Get a PDF, images, Word file, or text — generated locally in your browser.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <div class="trust">
+            <div>
+              <h3>Private by design</h3>
+              <p>Files are processed in memory on your device. Nothing is uploaded to a server.</p>
+            </div>
+            <div>
+              <h3>No installation</h3>
+              <p>Open index.html and go. Works as static files on your machine or any simple host.</p>
+            </div>
+            <div>
+              <h3>Honest limits</h3>
+              <p>Compression and text extract are best-effort client features — we tell you what to expect.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="site-footer__grid">
+          <div>
+            <a class="brand-lockup" href="index.html">
+              <span class="brand-badge" aria-hidden="true"></span>
+              <span class="brand-mark"><span data-brand>DocForge</span></span>
+            </a>
+            <p style="margin-top: 1rem; max-width: 28ch;">Professional document tools that run entirely in your browser.</p>
+          </div>
+          <div data-footer-groups></div>
+          <div>
+            <h3>Company</h3>
+            <ul>
+              <li><a href="about.html">About &amp; privacy</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="site-footer__meta">
+          <span>© <span id="year"></span> DocForge. All processing stays local.</span>
+          <span>Built with HTML, CSS &amp; JavaScript.</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <div id="toast-root" class="toast-root" aria-live="polite"></div>
+  <div id="modal-root" class="modal-root" hidden></div>
+
+  <script src="js/config.js"></script>
+  <script src="js/ui/icons.js"></script>
+  <script src="js/router-nav.js"></script>
+  <script src="js/ui/toast.js"></script>
+  <script src="js/ui/modal.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
