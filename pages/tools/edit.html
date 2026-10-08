@@ -90,15 +90,32 @@
             <div class="field" id="js-prop-default-font">
               <label for="opt-edit-default-font">Default font</label>
               <select id="opt-edit-default-font">
-                <option value="helvetica" selected>Helvetica</option>
-                <option value="helvetica-bold">Helvetica Bold</option>
-                <option value="arial">Arial</option>
-                <option value="arial-bold">Arial Bold</option>
-                <option value="times">Times Roman</option>
-                <option value="times-bold">Times Bold</option>
-                <option value="courier">Courier</option>
+                <optgroup label="Word-like">
+                  <option value="calibri" selected>Calibri</option>
+                  <option value="calibri-bold">Calibri Bold</option>
+                  <option value="cambria">Cambria</option>
+                  <option value="cambria-bold">Cambria Bold</option>
+                  <option value="arial">Arial</option>
+                  <option value="arial-bold">Arial Bold</option>
+                  <option value="times-new-roman">Times New Roman</option>
+                  <option value="times-new-roman-bold">Times New Roman Bold</option>
+                  <option value="courier-new">Courier New</option>
+                  <option value="courier-new-bold">Courier New Bold</option>
+                  <option value="georgia">Georgia</option>
+                  <option value="georgia-bold">Georgia Bold</option>
+                  <option value="comic-sans">Comic Sans MS</option>
+                  <option value="comic-sans-bold">Comic Sans MS Bold</option>
+                </optgroup>
+                <optgroup label="Built-in PDF fonts">
+                  <option value="helvetica">Helvetica</option>
+                  <option value="helvetica-bold">Helvetica Bold</option>
+                  <option value="times">Times Roman</option>
+                  <option value="times-bold">Times Bold</option>
+                  <option value="courier">Courier</option>
+                  <option value="courier-bold">Courier Bold</option>
+                </optgroup>
               </select>
-              <p class="field__help">Used for new text overlays. Arial is embedded in the download; the others are built-in PDF fonts.</p>
+              <p class="field__help">Used for new text overlays. Word-like fonts are embedded in the download. If Microsoft Word is installed, the live preview can use the real fonts.</p>
             </div>
             <p class="field__help" id="js-props-empty">Select a tool, then click or drag on the page. Tick and Cross place checkbox-style stamps. Redact can use a color picker, pick from the page, or detect the paper color. Sign opens a pad to draw or upload. Drag objects to move; use corners to resize.</p>
             <div id="js-redact-defaults" hidden>
@@ -120,13 +137,30 @@
               <div class="field" id="js-prop-font">
                 <label for="opt-edit-font">Font</label>
                 <select id="opt-edit-font">
-                  <option value="helvetica">Helvetica</option>
-                  <option value="helvetica-bold">Helvetica Bold</option>
-                  <option value="arial">Arial</option>
-                  <option value="arial-bold">Arial Bold</option>
-                  <option value="times">Times Roman</option>
-                  <option value="times-bold">Times Bold</option>
-                  <option value="courier">Courier</option>
+                  <optgroup label="Word-like">
+                    <option value="calibri">Calibri</option>
+                    <option value="calibri-bold">Calibri Bold</option>
+                    <option value="cambria">Cambria</option>
+                    <option value="cambria-bold">Cambria Bold</option>
+                    <option value="arial">Arial</option>
+                    <option value="arial-bold">Arial Bold</option>
+                    <option value="times-new-roman">Times New Roman</option>
+                    <option value="times-new-roman-bold">Times New Roman Bold</option>
+                    <option value="courier-new">Courier New</option>
+                    <option value="courier-new-bold">Courier New Bold</option>
+                    <option value="georgia">Georgia</option>
+                    <option value="georgia-bold">Georgia Bold</option>
+                    <option value="comic-sans">Comic Sans MS</option>
+                    <option value="comic-sans-bold">Comic Sans MS Bold</option>
+                  </optgroup>
+                  <optgroup label="Built-in PDF fonts">
+                    <option value="helvetica">Helvetica</option>
+                    <option value="helvetica-bold">Helvetica Bold</option>
+                    <option value="times">Times Roman</option>
+                    <option value="times-bold">Times Bold</option>
+                    <option value="courier">Courier</option>
+                    <option value="courier-bold">Courier Bold</option>
+                  </optgroup>
                 </select>
               </div>
               <div class="field" id="js-prop-size">
@@ -197,6 +231,7 @@
   <script src="../../vendor/pdf-lib.min.js"></script>
   <script src="../../vendor/fontkit.umd.min.js"></script>
   <script src="../../vendor/fonts/arimo-embedded.js"></script>
+  <script src="../../vendor/fonts/word-fonts-embedded.js"></script>
   <script src="../../vendor/pdf.min.js"></script>
   <script src="../../js/config.js"></script>
   <script src="../../js/core/events.js"></script>

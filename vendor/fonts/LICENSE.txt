@@ -1,5 +1,27 @@
-Arimo Regular and Bold (Apache License 2.0)
+Open font files used as Word-metric substitutes for Edit PDF text overlays.
+Microsoft Word fonts (Calibri, Cambria, Arial, Times New Roman, and others)
+cannot be bundled. These families are metric-compatible open replacements.
+
+Arimo Regular and Bold (Apache License 2.0) — Arial
 https://github.com/googlefonts/Arimo
 
-These files are used as Arial-metric substitutes for Edit PDF text overlays.
-The Apache License 2.0 text is at https://www.apache.org/licenses/LICENSE-2.0
+Carlito Regular and Bold (SIL Open Font License 1.1) — Calibri
+https://github.com/googlefonts/carlito
+
+Caladea Regular and Bold (SIL Open Font License 1.1) — Cambria
+https://github.com/googlefonts/caladea
+
+Tinos Regular and Bold (Apache License 2.0) — Times New Roman
+https://github.com/googlefonts/tinos
+
+Cousine Regular and Bold (Apache License 2.0) — Courier New
+https://github.com/googlefonts/cousine
+
+Gelasio Regular and Bold (SIL Open Font License 1.1) — Georgia
+https://fonts.google.com/specimen/Gelasio
+
+Comic Neue Regular and Bold (SIL Open Font License 1.1) — Comic Sans MS
+https://fonts.google.com/specimen/Comic+Neue
+
+Apache License 2.0: https://www.apache.org/licenses/LICENSE-2.0
+SIL Open Font License 1.1: https://scripts.sil.org/OFL

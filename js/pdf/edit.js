@@ -120,12 +120,25 @@
     'helvetica-bold': 'HelveticaBold',
     times: 'TimesRoman',
     'times-bold': 'TimesRomanBold',
-    courier: 'Courier'
+    courier: 'Courier',
+    'courier-bold': 'CourierBold'
   };
 
   var FONT_CUSTOM = {
+    calibri: 'Carlito-Regular.ttf',
+    'calibri-bold': 'Carlito-Bold.ttf',
+    cambria: 'Caladea-Regular.ttf',
+    'cambria-bold': 'Caladea-Bold.ttf',
     arial: 'Arimo-Regular.ttf',
-    'arial-bold': 'Arimo-Bold.ttf'
+    'arial-bold': 'Arimo-Bold.ttf',
+    'times-new-roman': 'Tinos-Regular.ttf',
+    'times-new-roman-bold': 'Tinos-Bold.ttf',
+    'courier-new': 'Cousine-Regular.ttf',
+    'courier-new-bold': 'Cousine-Bold.ttf',
+    georgia: 'Gelasio-Regular.ttf',
+    'georgia-bold': 'Gelasio-Bold.ttf',
+    'comic-sans': 'ComicNeue-Regular.ttf',
+    'comic-sans-bold': 'ComicNeue-Bold.ttf'
   };
 
   var customFontBytes = {};
@@ -215,7 +228,7 @@
   function registerFontkit(outDoc) {
     var kit = global.fontkit;
     if (!kit || typeof outDoc.registerFontkit !== 'function') {
-      throw new Error('Arial needs the fontkit library to embed in the PDF.');
+      throw new Error('This font needs the fontkit library to embed in the PDF.');
     }
     outDoc.registerFontkit(kit);
   }

@@ -1,6 +1,38 @@
 @font-face {
+  font-family: DocForgeCalibri;
+  src: local("Calibri"), url('../../vendor/fonts/Carlito-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: DocForgeCalibri;
+  src: local("Calibri Bold"), local("Calibri"), url('../../vendor/fonts/Carlito-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: DocForgeCambria;
+  src: local("Cambria"), url('../../vendor/fonts/Caladea-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: DocForgeCambria;
+  src: local("Cambria Bold"), local("Cambria"), url('../../vendor/fonts/Caladea-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: DocForgeArial;
-  src: url('../../vendor/fonts/Arimo-Regular.ttf') format('truetype');
+  src: local("Arial"), url('../../vendor/fonts/Arimo-Regular.ttf') format('truetype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -8,7 +40,71 @@
 
 @font-face {
   font-family: DocForgeArial;
-  src: url('../../vendor/fonts/Arimo-Bold.ttf') format('truetype');
+  src: local("Arial Bold"), local("Arial"), url('../../vendor/fonts/Arimo-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: DocForgeTinos;
+  src: local("Times New Roman"), url('../../vendor/fonts/Tinos-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: DocForgeTinos;
+  src: local("Times New Roman Bold"), local("Times New Roman"), url('../../vendor/fonts/Tinos-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: DocForgeCousine;
+  src: local("Courier New"), url('../../vendor/fonts/Cousine-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: DocForgeCousine;
+  src: local("Courier New Bold"), local("Courier New"), url('../../vendor/fonts/Cousine-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: DocForgeGeorgia;
+  src: local("Georgia"), url('../../vendor/fonts/Gelasio-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: DocForgeGeorgia;
+  src: local("Georgia Bold"), local("Georgia"), url('../../vendor/fonts/Gelasio-Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: DocForgeComic;
+  src: local("Comic Sans MS"), url('../../vendor/fonts/ComicNeue-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: DocForgeComic;
+  src: local("Comic Sans MS Bold"), local("Comic Sans MS"), url('../../vendor/fonts/ComicNeue-Bold.ttf') format('truetype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;

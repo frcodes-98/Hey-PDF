@@ -3,7 +3,28 @@
   var DocForge = global.DocForge || {};
   DocForge.ui = DocForge.ui || {};
 
-  var FONT_KEYS = ['helvetica', 'helvetica-bold', 'arial', 'arial-bold', 'times', 'times-bold', 'courier'];
+  var FONT_KEYS = [
+    'calibri',
+    'calibri-bold',
+    'cambria',
+    'cambria-bold',
+    'arial',
+    'arial-bold',
+    'times-new-roman',
+    'times-new-roman-bold',
+    'courier-new',
+    'courier-new-bold',
+    'georgia',
+    'georgia-bold',
+    'comic-sans',
+    'comic-sans-bold',
+    'helvetica',
+    'helvetica-bold',
+    'times',
+    'times-bold',
+    'courier',
+    'courier-bold'
+  ];
 
   function clamp(n, min, max) {
     return Math.max(min, Math.min(max, n));
@@ -20,14 +41,31 @@
 
   function cssForFont(font) {
     var key = normalizeFont(font);
-    if (key === 'times' || key === 'times-bold') {
-      return { family: '"Times New Roman", Times, Georgia, serif', bold: key === 'times-bold' };
+    var bold =
+      key.indexOf('-bold') !== -1 ||
+      key === 'helvetica-bold' ||
+      key === 'times-bold' ||
+      key === 'courier-bold';
+    if (key === 'calibri' || key === 'calibri-bold') {
+      return { family: 'DocForgeCalibri, Calibri, Carlito, Arial, sans-serif', bold: bold };
     }
-    if (key === 'courier') {
-      return { family: 'Courier, "Courier New", monospace', bold: false };
+    if (key === 'cambria' || key === 'cambria-bold') {
+      return { family: 'DocForgeCambria, Cambria, Caladea, Georgia, serif', bold: bold };
     }
     if (key === 'arial' || key === 'arial-bold') {
-      return { family: 'DocForgeArial, Arial, Helvetica, sans-serif', bold: key === 'arial-bold' };
+      return { family: 'DocForgeArial, Arial, Helvetica, sans-serif', bold: bold };
+    }
+    if (key === 'times-new-roman' || key === 'times-new-roman-bold' || key === 'times' || key === 'times-bold') {
+      return { family: 'DocForgeTinos, "Times New Roman", Tinos, Times, Georgia, serif', bold: bold };
+    }
+    if (key === 'courier-new' || key === 'courier-new-bold' || key === 'courier' || key === 'courier-bold') {
+      return { family: 'DocForgeCousine, "Courier New", Cousine, Courier, monospace', bold: bold };
+    }
+    if (key === 'georgia' || key === 'georgia-bold') {
+      return { family: 'DocForgeGeorgia, Georgia, Gelasio, serif', bold: bold };
+    }
+    if (key === 'comic-sans' || key === 'comic-sans-bold') {
+      return { family: 'DocForgeComic, "Comic Sans MS", "Comic Neue", cursive', bold: bold };
     }
     return { family: 'Helvetica, Arial, sans-serif', bold: key === 'helvetica-bold' };
   }
@@ -75,7 +113,7 @@
       var allowedTools = Array.isArray(options.tools) && options.tools.length
         ? options.tools.slice()
         : null;
-      var defaultFont = normalizeFont(options.defaultFont);
+      var defaultFont = normalizeFont(options.defaultFont || 'calibri');
 
       var pdfDoc = null;
       var bytes = null;
